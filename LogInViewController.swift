@@ -63,7 +63,8 @@ class LogInViewController: UIViewController {
         view.endEditing(true)
         super.touchesBegan(touches, withEvent: event)
     }
-//检查登录的用户是否有正确的账户和密码
+
+    //Check if the user has the correct account or password
     @IBAction func loginButtonPressed(sender: AnyObject) {
         let username:NSString = EmailField.text!
         let password:NSString = passwordField.text!
@@ -86,7 +87,7 @@ class LogInViewController: UIViewController {
                 let userLogo = data["user"]["logo"].string!
                 let userName = data["user"]["username"].string!
                 
-                //token存入本地缓存
+                //store token to local cache
                 localStore.saveToken(token)
                 localStore.saveISLOGGEDIN("1")
                 localStore.saveuserId(userId)
