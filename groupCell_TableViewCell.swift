@@ -48,7 +48,7 @@ class groupCell_TableViewCell: UITableViewCell {
         logo.layer.cornerRadius = 30
     }
     
-    //第一个cell，关于学校的cover和信息
+    // fisrt cell is about the detail information and background image of university
     func configureWithCell(university: universityLoadingData) {
         let universityName = university.name as String
         let universitylocation = university.country as String
@@ -60,13 +60,13 @@ class groupCell_TableViewCell: UITableViewCell {
         let universityId = university.universityId as Int
         let universityIsFollowed = university.isFollowed as Bool
         
-        //提取学校cover，background
+        //get the cover and background image
         let backgroundImage = CommonURL.universityCoverURL + universityBackground
         let URL = NSURL(string:backgroundImage)!
         self.background.hnk_setImageFromURL(URL)
         
         
-        //提取国家国旗
+        //get the national flag
         let encodedMessage = universityFlag.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLHostAllowedCharacterSet())
         
         let url = CommonURL.countryLogoURL + encodedMessage! + "Flag.png"
@@ -76,7 +76,7 @@ class groupCell_TableViewCell: UITableViewCell {
             self.flag.image = image
         }
         
-        //提取学校的logo
+        //get the university logo
         let logoData = CommonURL.universityLogoURL + universityLogo
         Alamofire.request(.GET, logoData).response() {
             (_, _, data, _) in
@@ -91,7 +91,7 @@ class groupCell_TableViewCell: UITableViewCell {
     }
     
     
-    //第一个cell，关于学校的cover和信息
+    //fisrt cell is about the detail information and background image of university
     func configureWithPlisData(university: [String: AnyObject]) {
         let universityName = university["name"] as! String
         let universitylocation = university["country"] as! String
@@ -103,13 +103,13 @@ class groupCell_TableViewCell: UITableViewCell {
         let universityId = university["universityId"] as! Int
         let universityIsFollowed = university["isFollowed"] as! Bool
         
-        //提取学校cover，background
+        //get the university cover，background
         let backgroundImage = CommonURL.universityCoverURL + universityBackground
         let URL = NSURL(string:backgroundImage)!
         self.background.hnk_setImageFromURL(URL)
         
         
-        //提取国家国旗
+        //get the national flag
         let encodedMessage = universityFlag.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLHostAllowedCharacterSet())
         
         let url = CommonURL.countryLogoURL + encodedMessage! + "Flag.png"
@@ -119,7 +119,7 @@ class groupCell_TableViewCell: UITableViewCell {
             self.flag.image = image
         }
         
-        //提取学校的logo
+        //get the university logo
         let logoData = CommonURL.universityLogoURL + universityLogo
         Alamofire.request(.GET, logoData).response() {
             (_, _, data, _) in
@@ -136,7 +136,7 @@ class groupCell_TableViewCell: UITableViewCell {
     
     
     /*************************************************************************************************/
-    //第二个cell，关于学校的post和留言
+    //second cell is about the post detail and comments of university
     func configureWithCell2(university: JSON) {
         let universityName = university["name"].string ?? ""
         let universitylocation = university["country"].string ?? ""
@@ -159,7 +159,7 @@ class groupCell_TableViewCell: UITableViewCell {
             self.followUniversityImage.image = UIImage(named: "follow")
         }
         
-        //提取学校cover，background
+        //get university cover，background
         let profileData = CommonURL.universityCoverURL + universityBackground
         Alamofire.request(.GET, profileData).response() {
             (_, _, data, _) in
@@ -167,7 +167,7 @@ class groupCell_TableViewCell: UITableViewCell {
             let image = UIImage(data: data! as! NSData)
             self.background.image = image
         }
-        //提取国家国旗
+        //get national flag
         let encodedMessage = universitylocation.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLHostAllowedCharacterSet())
         
         let url = CommonURL.countryLogoURL + encodedMessage! + "Flag.png"
@@ -177,7 +177,7 @@ class groupCell_TableViewCell: UITableViewCell {
             self.flag.image = image
         }
         
-        //提取学校的logo
+        //get university logo
         let logoData = CommonURL.universityLogoURL + universityLogo
         Alamofire.request(.GET, logoData).response() {
             (_, _, data, _) in
