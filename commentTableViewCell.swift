@@ -81,7 +81,7 @@ class commentTableViewCell: UITableViewCell {
     }
     
     @IBAction func profileokay(sender: AnyObject) {
-        print("测试正常")
+        print("All the test is good")
     }
     
     func configureWithCommentsJSON(data: JSON) {
@@ -96,13 +96,13 @@ class commentTableViewCell: UITableViewCell {
         self.postSelfLiked = userSelfLiked
         self.likeNumber = userLikesNumber
         
-        //时间
+        //postTime
         let PostTimeData = String(stringInterpolationSegment: userTime)
         let theDate = NSDate(jsonDate:"/Date(" + PostTimeData + ")/")
-        //把theDate转换成String
+        //conevt the Date to String
         let myDate = String(stringInterpolationSegment: theDate!)
         let projectPostTime = timeAgoSinceDate(dateFromString(myDate, format: "yyyy-MM-dd HH:mm:ssZ"), numericDates: true)
-        //头像
+        //profile image
         let profileData = CommonURL.userLogoURL + userProfile
         Alamofire.request(.GET, profileData).response() {
             (_, _, data, _) in
@@ -115,7 +115,7 @@ class commentTableViewCell: UITableViewCell {
         }else{
             selfLikedImage.image = UIImage(named: "unlikeImage")
         }
-        //名字
+        //name
         time.text = projectPostTime
         name.text = userName
         
@@ -144,13 +144,13 @@ class commentTableViewCell: UITableViewCell {
         self.likeNumber = userLikesNumber
         
         
-        //时间
+        //post time
         let PostTimeData = String(userTime)
         let theDate = NSDate(jsonDate:"/Date(" + PostTimeData + ")/")
-        //把theDate转换成String
+        //convert the date to String
         let myDate = String(stringInterpolationSegment: theDate!)
         let projectPostTime = timeAgoSinceDate(dateFromString(myDate, format: "yyyy-MM-dd HH:mm:ssZ"), numericDates: true)
-        //头像
+        //profile
         let profileData = CommonURL.userLogoURL + userProfile
         Alamofire.request(.GET, profileData).response() {
             (_, _, data, _) in
@@ -163,7 +163,7 @@ class commentTableViewCell: UITableViewCell {
         }else{
             selfLikedImage.image = UIImage(named: "unlikeImage")
         }
-        //名字
+        //name
         time.text = projectPostTime
         name.text = userName
         
